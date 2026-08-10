@@ -1,0 +1,774 @@
+/* =========================================
+   OSCILLAB
+   Harmonic Motion Simulator
+   ========================================= */
+
+
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #13243a 0%,
+            #07111f 45%,
+            #040912 100%
+        );
+
+    color: #e9f2ff;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.header {
+
+    width: 100%;
+
+    min-height: 82px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        18px
+        clamp(20px, 5vw, 70px);
+
+    border-bottom:
+        1px solid #243449;
+
+    background:
+        rgba(4, 9, 18, 0.92);
+
+    backdrop-filter:
+        blur(10px);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+}
+
+
+.header-left h1 {
+
+    font-size:
+        clamp(24px, 4vw, 38px);
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+
+    color: #00d9ff;
+
+}
+
+
+.header-left p {
+
+    margin-top: 3px;
+
+    color: #8fa3b8;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #8fa3b8;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.status-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #36e69b;
+
+    box-shadow:
+        0 0 12px
+        rgba(54, 230, 155, 0.8);
+
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.container {
+
+    width: min(
+        1200px,
+        calc(100% - 32px)
+    );
+
+    margin:
+        32px auto
+        60px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+}
+
+
+/* =========================================
+   PANEL
+   ========================================= */
+
+.panel {
+
+    background:
+        rgba(10, 21, 36, 0.82);
+
+    border:
+        1px solid #243449;
+
+    border-radius: 14px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.18);
+
+}
+
+
+.panel-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+
+    padding-bottom: 14px;
+
+    border-bottom:
+        1px solid #243449;
+
+}
+
+
+.panel-title h2 {
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+
+}
+
+
+.panel-title > span {
+
+    color: #6f849c;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+/* =========================================
+   PARAMETERS
+   ========================================= */
+
+.parameter-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+
+}
+
+
+.parameter {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.parameter label {
+
+    color: #91a5bb;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.input-wrapper {
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid #31445c;
+
+    border-radius: 8px;
+
+    background:
+        #07111f;
+
+}
+
+
+.input-wrapper input {
+
+    width: 100%;
+
+    min-width: 0;
+
+    padding: 12px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+}
+
+
+.input-wrapper input:focus {
+
+    box-shadow:
+        inset 0 0 0 1px #00d9ff;
+
+}
+
+
+.input-wrapper span {
+
+    padding-right: 12px;
+
+    color: #70859c;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.control-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-top: 20px;
+
+}
+
+
+.btn {
+
+    min-height: 44px;
+
+    border:
+        1px solid #31445c;
+
+    border-radius: 8px;
+
+    background:
+        #0b1a2c;
+
+    color: #dce8f5;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        border-color 0.15s ease;
+
+}
+
+
+.btn:hover {
+
+    background:
+        #12263d;
+
+    border-color:
+        #4b6480;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.btn:active {
+
+    transform:
+        translateY(0);
+
+}
+
+
+.btn-primary {
+
+    background:
+        #00a8c7;
+
+    border-color:
+        #00d9ff;
+
+    color:
+        #ffffff;
+
+}
+
+
+.btn-primary:hover {
+
+    background:
+        #00bfdc;
+
+}
+
+
+/* =========================================
+   STATE
+   ========================================= */
+
+.state-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+}
+
+
+.state-card {
+
+    padding: 18px;
+
+    border:
+        1px solid #263b53;
+
+    border-radius: 10px;
+
+    background:
+        rgba(5, 13, 24, 0.75);
+
+}
+
+
+.state-label {
+
+    color: #7389a1;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    font-weight: 700;
+
+}
+
+
+.state-value {
+
+    margin-top: 8px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+}
+
+
+.state-value span {
+
+    color: #71869e;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+}
+
+
+.state-formula {
+
+    margin-top: 5px;
+
+    color: #00d9ff;
+
+    font-family:
+        "Times New Roman",
+        serif;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================
+   SIMULATION
+   ========================================= */
+
+.simulation-container {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border:
+        1px solid #263b53;
+
+    border-radius: 10px;
+
+    background:
+        #07111f;
+
+}
+
+
+#simulationCanvas {
+
+    display: block;
+
+    width: 100%;
+
+    height: 300px;
+
+}
+
+
+/* =========================================
+   GRAPH
+   ========================================= */
+
+.graph-container {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border:
+        1px solid #263b53;
+
+    border-radius: 10px;
+
+    background:
+        #07111f;
+
+}
+
+
+#motionChart {
+
+    display: block;
+
+    width: 100%;
+
+    height: 400px;
+
+}
+
+
+/* =========================================
+   FORMULA
+   ========================================= */
+
+.formula-panel {
+
+    text-align: center;
+
+}
+
+
+.formula {
+
+    padding: 25px;
+
+    color: #00d9ff;
+
+    font-family:
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(25px, 5vw, 42px);
+
+}
+
+
+.formula-list {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    color: #8195aa;
+
+    font-size: 12px;
+
+}
+
+
+.formula-list strong {
+
+    color: #dce9f7;
+
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.footer {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    padding: 25px;
+
+    border-top:
+        1px solid #243449;
+
+    color: #61758c;
+
+    font-size: 11px;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+.footer strong {
+
+    color: #00d9ff;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .parameter-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .state-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .control-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+
+    .header-right {
+
+        display: none;
+
+    }
+
+
+    .container {
+
+        width:
+            calc(100% - 20px);
+
+        margin-top: 20px;
+
+    }
+
+
+    .panel {
+
+        padding: 16px;
+
+    }
+
+
+    .parameter-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .state-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .control-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .panel-title {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    #simulationCanvas {
+
+        height: 240px;
+
+    }
+
+
+    #motionChart {
+
+        height: 300px;
+
+    }
+
+}
