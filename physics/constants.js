@@ -1,11 +1,9 @@
 export const PI = Math.PI;
 export const TWO_PI = 2 * Math.PI;
-
 export const DEFAULT_AMPLITUDE = 5;
 export const DEFAULT_ANGULAR_FREQUENCY = Math.PI;
 export const DEFAULT_PHASE = 0;
 export const DEFAULT_DURATION = 10;
-
 export const MIN_AMPLITUDE = 0.01;
 export const MAX_AMPLITUDE = 100;
 export const MIN_ANGULAR_FREQUENCY = 0.01;
