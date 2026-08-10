@@ -264,107 +264,52 @@ body {
     height: 300px;
 }
 .graph-container {
-
     width: 100%;
-
     overflow: hidden;
-
     border:
         1px solid #263b53;
-
     border-radius: 10px;
-
     background:
         #07111f;
-
 }
-
-
 #motionChart {
-
     display: block;
-
     width: 100%;
-
     height: 400px;
-
 }
-
-
-/* =========================================
-   FORMULA
-   ========================================= */
-
 .formula-panel {
-
     text-align: center;
-
 }
-
-
 .formula {
-
     padding: 25px;
-
     color: #00d9ff;
-
     font-family:
         "Times New Roman",
         serif;
-
     font-size:
         clamp(25px, 5vw, 42px);
-
 }
-
-
 .formula-list {
-
     display: flex;
-
     justify-content: center;
-
     flex-wrap: wrap;
-
     gap: 25px;
-
     color: #8195aa;
-
     font-size: 12px;
-
 }
-
-
 .formula-list strong {
-
     color: #dce9f7;
-
 }
-
-
-/* =========================================
-   FOOTER
-   ========================================= */
-
 .footer {
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     flex-wrap: wrap;
-
     gap: 12px;
-
     padding: 25px;
-
     border-top:
         1px solid #243449;
-
     color: #61758c;
-
     font-size: 11px;
     letter-spacing: 0.5px;
 }
