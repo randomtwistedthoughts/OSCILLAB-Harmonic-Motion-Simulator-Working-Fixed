@@ -1,96 +1,50 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
     <title>OSCILLAB — Vật lý 11</title>
-
     <link
         rel="stylesheet"
         href="./style.css"
     >
 </head>
-
-
 <body>
-
-    <!-- ============================= -->
-    <!-- HEADER -->
-    <!-- ============================= -->
-
     <header class="header">
-
         <div class="header-left">
-
             <h1>OSCILLAB</h1>
-
             <p>
                 VẬT LÝ 11 – DAO ĐỘNG ĐIỀU HÒA
             </p>
-
         </div>
-
-
         <div class="header-right">
-
             <div class="status-dot"></div>
-
             <span>
                 SIMULATION READY
             </span>
-
         </div>
-
             <span id="simulationStatus" aria-live="polite">● READY</span>
         </div>
     </header>
-
-
-    <!-- ============================= -->
-    <!-- MAIN -->
-    <!-- ============================= -->
-
     <main class="container">
-
-
-        <!-- ========================= -->
-        <!-- CONTROL PANEL -->
-        <!-- ========================= -->
-
         <section class="panel">
-
             <div class="panel-title">
-
                 <h2>
                     THÔNG SỐ DAO ĐỘNG
                 </h2>
-
                 <span>
                     SHM PARAMETERS
                 </span>
-
             </div>
-
-
             <div class="parameter-grid">
-
-
-                <!-- AMPLITUDE -->
-
                 <div class="parameter">
-
                     <label for="amplitude">
                         Biên độ A
                     </label>
-
                     <div class="input-wrapper">
-
                         <input
                             id="amplitude"
                             type="number"
@@ -99,24 +53,14 @@
                             max="100"
                             step="0.1"
                         >
-
                         <span>cm</span>
-
                     </div>
-
                 </div>
-
-
-                <!-- OMEGA -->
-
                 <div class="parameter">
-
                     <label for="omega">
                         Tần số góc ω
                     </label>
-
                     <div class="input-wrapper">
-
                         <input
                             id="omega"
                             type="number"
@@ -125,48 +69,28 @@
                             max="100"
                             step="0.01"
                         >
-
                         <span>rad/s</span>
-
                     </div>
-
                 </div>
-
-
-                <!-- PHASE -->
-
                 <div class="parameter">
-
                     <label for="phase">
                         Pha ban đầu φ
                     </label>
-
                     <div class="input-wrapper">
-
                         <input
                             id="phase"
                             type="number"
                             value="0"
                             step="0.1"
                         >
-
                         <span>rad</span>
-
                     </div>
-
                 </div>
-
-
-                <!-- DURATION -->
-
                 <div class="parameter">
-
                     <label for="duration">
                         Thời gian mô phỏng
                     </label>
-
                     <div class="input-wrapper">
-
                         <input
                             id="duration"
                             type="number"
@@ -175,20 +99,11 @@
                             max="120"
                             step="1"
                         >
-
                         <span>s</span>
-
                     </div>
-
                 </div>
-
             </div>
-
-
-            <!-- CONTROL BUTTONS -->
-
             <div class="control-grid">
-
                 <button
                     id="startButton"
                     class="btn btn-primary"
@@ -196,8 +111,6 @@
                 >
                     ▶ BẮT ĐẦU
                 </button>
-
-
                 <button
                     id="pauseButton"
                     class="btn"
@@ -205,8 +118,6 @@
                 >
                     ⏸ TẠM DỪNG
                 </button>
-
-
                 <button
                     id="resetButton"
                     class="btn"
@@ -214,8 +125,6 @@
                 >
                     ↻ ĐẶT LẠI
                 </button>
-
-
                 <button
                     id="clearButton"
                     class="btn"
@@ -223,263 +132,146 @@
                 >
                     ✕ XÓA DỮ LIỆU
                 </button>
-
             </div>
-
         </section>
-
-
-
-        <!-- ========================= -->
-        <!-- CURRENT STATE -->
-        <!-- ========================= -->
-
         <section class="panel">
-
             <div class="panel-title">
-
                 <h2>
                     TRẠNG THÁI HIỆN TẠI
                 </h2>
-
                 <span class="current-time">
                     t =
                     <strong>0.00</strong>
                     s
                 </span>
-
             </div>
-
-
             <div class="state-grid">
-
-
                 <div class="state-card">
-
                     <div class="state-label">
                         LI ĐỘ
                     </div>
-
                     <div class="state-value">
                         5.00
                         <span>cm</span>
                     </div>
-
                     <div class="state-formula">
                         x(t)
                     </div>
-
                 </div>
-
-
                 <div class="state-card">
-
                     <div class="state-label">
                         VẬN TỐC
                     </div>
-
                     <div class="state-value">
                         0.00
                         <span>cm/s</span>
                     </div>
-
                     <div class="state-formula">
                         v(t)
                     </div>
-
                 </div>
-
-
                 <div class="state-card">
-
                     <div class="state-label">
                         GIA TỐC
                     </div>
-
                     <div class="state-value">
                         -49.35
                         <span>cm/s²</span>
                     </div>
-
                     <div class="state-formula">
                         a(t)
                     </div>
-
                 </div>
-
-
                 <div class="state-card">
-
                     <div class="state-label">
                         NĂNG LƯỢNG
                     </div>
-
                     <div class="state-value">
                         0.0123
                         <span>J</span>
                     </div>
-
                     <div class="state-formula">
                         E
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
-
-
-        <!-- ========================= -->
-        <!-- SIMULATION -->
-        <!-- ========================= -->
-
         <section class="panel">
-
             <div class="panel-title">
-
                 <h2>
                     MÔ PHỎNG DAO ĐỘNG
                 </h2>
-
                 <span>
                     REAL-TIME SIMULATION
                 </span>
-
             </div>
-
-
             <div class="simulation-container">
-
                 <canvas
                     id="simulationCanvas"
                     width="1000"
                     height="300"
                 ></canvas>
-
             </div>
-
         </section>
-
-
-
-        <!-- ========================= -->
-        <!-- GRAPH -->
-        <!-- ========================= -->
-
         <section class="panel">
-
             <div class="panel-title">
-
                 <h2>
                     ĐỒ THỊ DAO ĐỘNG
                 </h2>
-
                 <span>
                     x(t) / v(t) / a(t)
                 </span>
-
             </div>
-
-
             <div class="graph-container">
-
                 <canvas
                     id="motionChart"
                     width="1000"
                     height="400"
                 ></canvas>
-
             </div>
-
         </section>
-
-
-
-        <!-- ========================= -->
-        <!-- FORMULA -->
-        <!-- ========================= -->
-
         <section class="panel formula-panel">
-
             <div class="panel-title">
-
                 <h2>
                     PHƯƠNG TRÌNH DAO ĐỘNG
                 </h2>
-
                 <span>
                     HARMONIC MOTION
                 </span>
-
             </div>
-
-
             <div class="formula">
-
                 x(t) =
                 A cos(ωt + φ)
-
             </div>
-
-
             <div class="formula-list">
-
                 <div>
                     <strong>x</strong>
                     — li độ
                 </div>
-
                 <div>
                     <strong>A</strong>
                     — biên độ
                 </div>
-
                 <div>
                     <strong>ω</strong>
                     — tần số góc
                 </div>
-
                 <div>
                     <strong>φ</strong>
                     — pha ban đầu
                 </div>
-
             </div>
-
         </section>
-
     </main>
-
-
-
-    <!-- ============================= -->
-    <!-- FOOTER -->
-    <!-- ============================= -->
-
     <footer class="footer">
-
         <strong>OSCILLAB</strong>
-
         <span>
             Vật lý 11 – Dao động điều hòa
         </span>
-
         <span>
             Interactive Physics Simulation
         </span>
-
     </footer>
-
-
-
-    <!-- ============================= -->
-    <!-- MAIN JAVASCRIPT -->
-    <!-- ============================= -->
-
     <script src="./physics/main.js" defer></script>
-
 </body>
-
 </html>
